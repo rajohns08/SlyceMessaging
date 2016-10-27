@@ -43,6 +43,14 @@ public abstract class Message {
         return displayName;
     }
 
+    public String getFirstName() {
+        if (getDisplayName() != null) {
+            return getDisplayName().split(" ")[0];
+        } else {
+            return "";
+        }
+    }
+
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
     }

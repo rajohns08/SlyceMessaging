@@ -54,5 +54,5 @@
         android:singleLine="true"
         android:textColor="@color/text_gray_darkest"
         android:textSize="10sp"
-        tools:text="12:29pm" />
+        tools:text="Adam • 12:29pm" />
 </RelativeLayout>

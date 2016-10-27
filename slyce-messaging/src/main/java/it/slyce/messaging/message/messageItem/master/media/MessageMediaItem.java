@@ -38,9 +38,10 @@ public abstract class MessageMediaItem extends MessageItem {
             date = DateUtils.getTimestamp(context, message.getDate());
             final String mediaUrl = getMediaMessage().getUrl();
             this.avatarUrl = message.getAvatarUrl();
+            String firstName = message.getFirstName();
 
             // Populate views with content
-            messageMediaViewHolder.timestamp.setText(date != null ? date : "");
+            messageMediaViewHolder.timestamp.setText(date != null ? firstName + " • " + date : "");
 
             messageMediaViewHolder.media.setWidthToHeightRatio(widthToHeightRatio);
             messageMediaViewHolder.media.setImageUrlToLoadOnLayout(mediaUrl);

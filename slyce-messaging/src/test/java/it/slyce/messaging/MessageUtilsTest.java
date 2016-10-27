@@ -7,11 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.slyce.messaging.message.MediaMessage;
+import it.slyce.messaging.message.Message;
 import it.slyce.messaging.message.MessageSource;
 import it.slyce.messaging.message.TextMessage;
 import it.slyce.messaging.message.messageItem.MessageItem;
 import it.slyce.messaging.utils.MessageUtils;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -110,5 +112,21 @@ public class MessageUtilsTest {
 
         assertTrue(item.isFirstConsecutiveMessageFromSource());
         assertTrue(item.isLastConsecutiveMessageFromSource());
+    }
+
+    @Test
+    public void getFirstName() {
+        Message textMessage = new TextMessage();
+
+        // No name set should return empty string
+        assertEquals("", textMessage.getFirstName());
+
+        // Spaced name should return first name
+        textMessage.setDisplayName("Adam Johns");
+        assertEquals("Adam", textMessage.getFirstName());
+
+        // No spaces should return full name
+        textMessage.setDisplayName("Adam");
+        assertEquals("Adam", textMessage.getFirstName());
     }
 }

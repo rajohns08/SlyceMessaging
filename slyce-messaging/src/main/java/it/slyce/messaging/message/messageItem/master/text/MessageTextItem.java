@@ -39,10 +39,11 @@ public class MessageTextItem extends MessageItem {
             String text = ((TextMessage)message).getText();
             this.avatarUrl = message.getAvatarUrl();
             this.initials = message.getInitials();
+            String firstName = message.getFirstName();
 
             // Populate views with content
             messageTextViewHolder.text.setText(text != null ? text : "");
-            messageTextViewHolder.timestamp.setText(date != null ? date : "");
+            messageTextViewHolder.timestamp.setText(date != null ? firstName + " • " + date : "");
 
             messageTextViewHolder.bubble.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override

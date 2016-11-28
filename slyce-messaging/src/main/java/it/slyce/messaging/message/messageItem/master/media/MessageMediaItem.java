@@ -1,11 +1,9 @@
 package it.slyce.messaging.message.messageItem.master.media;
 
 import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 
-import it.slyce.messaging.ViewImageActivity;
 import it.slyce.messaging.message.MediaMessage;
 import it.slyce.messaging.message.MessageSource;
 import it.slyce.messaging.message.messageItem.MessageItem;
@@ -45,17 +43,7 @@ public abstract class MessageMediaItem extends MessageItem {
 
             messageMediaViewHolder.media.setWidthToHeightRatio(widthToHeightRatio);
             messageMediaViewHolder.media.setImageUrlToLoadOnLayout(mediaUrl);
-
-            messageMediaViewHolder.media.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(context, ViewImageActivity.class);
-                    intent.putExtra("URL", mediaUrl);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);
-                }
-            });
-
+            messageMediaViewHolder.media.setOnClickListener(getMediaMessage().onClickListener);
             messageMediaViewHolder.media.setVisibility(!TextUtils.isEmpty(mediaUrl) ? View.VISIBLE : View.INVISIBLE);
             messageMediaViewHolder.timestamp.setVisibility(isLastConsecutiveMessageFromSource ? View.VISIBLE : View.GONE);
         }

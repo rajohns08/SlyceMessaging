@@ -1,6 +1,7 @@
 package it.slyce.messaging.message.messageItem.master.media;
 
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import it.slyce.messaging.utils.CustomSettings;
@@ -13,6 +14,7 @@ import it.slyce.messaging.view.image.GlideRoundedImageView;
 public class MessageMediaViewHolder extends MessageViewHolder {
     public ImageView carrot;
     public GlideRoundedImageView media;
+    public FrameLayout mediaBackground;
 
     public MessageMediaViewHolder(View itemView, CustomSettings customSettings) {
         super(itemView, customSettings);

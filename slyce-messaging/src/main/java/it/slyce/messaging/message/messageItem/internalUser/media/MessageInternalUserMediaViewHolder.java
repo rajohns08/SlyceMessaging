@@ -1,6 +1,7 @@
 package it.slyce.messaging.message.messageItem.internalUser.media;
 
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,8 +20,10 @@ public class MessageInternalUserMediaViewHolder extends MessageMediaViewHolder {
 
         carrot = (ImageView) itemView.findViewById(R.id.message_user_media_image_view_carrot);
         media = (GlideRoundedImageView) itemView.findViewById(R.id.message_user_media_picasso_rounded_image_view_media);
+        mediaBackground = (FrameLayout) itemView.findViewById(R.id.message_user_media_view_group_bubble);
         timestamp = (TextView) itemView.findViewById(R.id.message_user_media_text_view_timestamp);
 
         carrot.setColorFilter(customSettings.localBubbleBackgroundColor);
+        mediaBackground.setBackgroundColor(customSettings.localBubbleBackgroundColor);
     }
 }

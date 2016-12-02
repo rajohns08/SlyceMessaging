@@ -31,8 +31,9 @@
 
         <it.slyce.messaging.view.image.GlideRoundedImageView
             android:id="@+id/message_user_media_picasso_rounded_image_view_media"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:padding="10dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             app:riv_corner_radius="3dp"

@@ -1,5 +1,6 @@
 package it.snipsnap.slyce_messaging_example;
 
+import android.content.ContentResolver;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -147,14 +148,18 @@ public class MainActivity extends AppCompatActivity {
         scheduleTaskExecutor.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
-                TextMessage textMessage = new TextMessage();
-                textMessage.setText("Another message...");
-                textMessage.setAvatarUrl("https://lh3.googleusercontent.com/-Y86IN-vEObo/AAAAAAAAAAI/AAAAAAAKyAM/6bec6LqLXXA/s0-c-k-no-ns/photo.jpg");
-                textMessage.setDisplayName("Gary Johnson");
-                textMessage.setUserId("LP");
-                textMessage.setDate(new Date().getTime());
-                textMessage.setSource(MessageSource.EXTERNAL_USER);
-                slyceMessagingFragment.addNewMessage(textMessage);
+                MediaMessage mediaMessage = new MediaMessage();
+                Uri uri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" +
+                    getResources().getResourcePackageName(R.drawable.ic_play) + "/" +
+                    getResources().getResourceTypeName(R.drawable.ic_play) + "/" +
+                    getResources().getResourceEntryName(R.drawable.ic_play));
+                mediaMessage.setUrl(uri.toString());
+                mediaMessage.setAvatarUrl("https://lh3.googleusercontent.com/-Y86IN-vEObo/AAAAAAAAAAI/AAAAAAAKyAM/6bec6LqLXXA/s0-c-k-no-ns/photo.jpg");
+                mediaMessage.setDisplayName("Gary Johnson");
+                mediaMessage.setUserId("LP");
+                mediaMessage.setDate(new Date().getTime());
+                mediaMessage.setSource(MessageSource.EXTERNAL_USER);
+                slyceMessagingFragment.addNewMessage(mediaMessage);
             }
         }, 3, 500, TimeUnit.SECONDS);
     }
